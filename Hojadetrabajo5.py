@@ -27,15 +27,15 @@ class Simulation:
             while instructions > 0:
                 yield env.timeout(1)
                 instructions -= self.cpu_speed
-                if random.randint(1, 21) == 1:
-                    yield env.timeout(5)  # Simula espera por I/O 
+                if random.randint(1, 2) == 1:
+                    yield env.timeout(5)  # Simula espera por I/O
         end_time = env.now
         self.process_times.append(end_time - start_time)
     
     def get_results(self):
         return np.mean(self.process_times), np.std(self.process_times)
 
-def run_experiment(num_processes_list, arrival_interval):
+def run_experiment(num_processes_list, arrival_interval, title):
     results = []
     for num_processes in num_processes_list:
         env = simpy.Environment()
@@ -51,9 +51,10 @@ def run_experiment(num_processes_list, arrival_interval):
     plt.plot(x, y, marker='o', label=f'Intervalo {arrival_interval}')
     plt.xlabel('Número de procesos')
     plt.ylabel('Tiempo promedio en sistema')
-    plt.title('Simulación con memoria incrementada a 200')
+    plt.title(title)
     plt.legend()
     plt.show()
 
-# Ejecutar experimentos
-run_experiment([25, 50, 100, 150, 200], arrival_interval=10)
+# Ejecutar experimentos con intervalo de llegada 10
+title_10 = 'Simulación con intervalo de llegada 10'
+run_experiment([25, 50, 100, 150, 200], arrival_interval=10, title=title_10)
