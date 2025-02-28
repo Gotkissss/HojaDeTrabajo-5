@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Simulation:
-    def __init__(self, env, num_processes, arrival_interval=10, memory=200, cpu_speed=3, num_cpus=1):
+    def _init_(self, env, num_processes, arrival_interval=10, memory=200, cpu_speed=3, num_cpus=1):
         self.env = env
         self.memory = simpy.Container(env, init=memory, capacity=memory)
         self.cpu = simpy.Resource(env, capacity=num_cpus)
@@ -55,6 +55,6 @@ def run_experiment(num_processes_list, arrival_interval, title):
     plt.legend()
     plt.show()
 
-# Ejecutar experimentos con intervalo de llegada 10
-title_10 = 'Simulación con intervalo de llegada 10'
-run_experiment([25, 50, 100, 150, 200], arrival_interval=10, title=title_10)
+# Ejecutar experimentos con intervalo de llegada 5
+title_5 = 'Simulación con intervalo de llegada 5'
+run_experiment([25, 50, 100, 150, 200], arrival_interval=5, title=title_5)
