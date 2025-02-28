@@ -55,6 +55,8 @@ def run_experiment(num_processes_list, arrival_interval, title):
     plt.legend()
     plt.show()
 
-# Ejecutar experimentos con intervalo de llegada 5
-title_5 = 'Simulación con intervalo de llegada 5'
-run_experiment([25, 50, 100, 150, 200], arrival_interval=5, title=title_5)
+
+
+# Ejecutar experimentos con intervalo de llegada 1
+title_1 = 'Simulación con intervalo de llegada 1'
+run_experiment([25, 50, 100, 150, 200], arrival_interval=1, title=title_1)
