@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Simulation:
-    def _init_(self, env, num_processes, arrival_interval=10, memory=200, cpu_speed=3, num_cpus=1):
+    def __init__(self, env, num_processes, arrival_interval=10, memory=200, cpu_speed=3, num_cpus=1):
         self.env = env
         self.memory = simpy.Container(env, init=memory, capacity=memory)
         self.cpu = simpy.Resource(env, capacity=num_cpus)
